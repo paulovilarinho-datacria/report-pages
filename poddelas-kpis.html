@@ -9,70 +9,27 @@
 <title>Resultados e estimativas · PodDelas + Disney</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Jost:wght@600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/datacria-report.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Jost:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/datacria-report.css?v=2">
+<link rel="stylesheet" href="assets/dc-charts.css?v=2">
 <style>
-.kpis{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:32px}
-.kpis .dc-card{padding:24px}
+.kpis{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:48px}
 .kpi-foot{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline}
-.section-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin:0 0 16px}
-.section-head h2{margin:0;font:600 22px/1.25 var(--font-display);color:var(--ink)}
-.section-head p{margin:0;font-size:13px;color:var(--ink-muted)}
-.episodes{padding:8px 24px}
-.ep,.axis-row{display:grid;grid-template-columns:176px minmax(0,1fr) 176px;gap:32px;align-items:center}
-.ep{padding:24px 0;border-top:1px solid var(--line)}
-.ep:first-of-type{border-top:0}
-.axis-row{padding:16px 0 0}
-.thumb{display:block;text-decoration:none;color:inherit}
-.thumb img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:var(--radius)}
-.thumb span{display:block;margin-top:8px;font:600 15px/1.3 var(--font-body);color:var(--ink)}
-.thumb:hover span{text-decoration:underline;text-underline-offset:3px}
-.readout{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;margin-bottom:12px}
-.readout strong{font:600 26px/1.15 var(--font-display);font-variant-numeric:tabular-nums;color:var(--ink)}
-.readout small{font-size:13px;color:var(--ink-muted)}
-.track{position:relative;height:40px;cursor:default}
-.track:focus-visible{outline-offset:6px}
-.grid-line{position:absolute;top:0;bottom:0;width:1px;background:var(--neutral-soft)}
-.bar{position:absolute;left:0;top:14px;height:16px;background:var(--neutral)}
-.bar.focus{background:var(--orange)}
-.goal{position:absolute;top:6px;bottom:2px;border-left:1.5px dashed var(--ink-strong)}
-.goal-label{position:absolute;top:-14px;transform:translateX(-50%);font-size:11px;color:var(--ink-muted);white-space:nowrap}
-.annot{position:absolute;top:14px;height:16px;display:flex;align-items:center;padding-left:8px;font:600 12px/1 var(--font-body);color:var(--orange-text);white-space:nowrap}
-.annot.inside{padding:0 8px 0 0;color:var(--ink-strong)}
-.axis{position:relative;height:16px;font-size:11px;color:var(--ink-muted)}
-.axis span{position:absolute;transform:translateX(-50%);white-space:nowrap}
-.axis span:first-child{transform:none}
-.axis span:last-child{transform:translateX(-100%)}
-.ret .val{font:600 26px/1.15 var(--font-display);font-variant-numeric:tabular-nums;color:var(--ink);margin:2px 0 4px}
-.ret .dc-delta{display:block;white-space:normal}
-.legend{display:flex;flex-wrap:wrap;gap:8px 24px;margin:16px 0 0;font-size:12px;color:var(--ink-muted)}
-.legend span{display:inline-flex;align-items:center;gap:8px}
-.sw{display:inline-block;width:14px;height:10px;background:var(--neutral)}
-.sw.focus{background:var(--orange)}
-.sw.goal-sw{width:0;height:14px;border-left:1.5px dashed var(--ink-strong)}
-@media(max-width:860px){
-  .ep,.axis-row{grid-template-columns:136px minmax(0,1fr);gap:16px 24px}
-  .ret{grid-column:2}
-  .axis-row>.axis-spacer:last-child{display:none}
-}
-@media(max-width:560px){
-  .kpis{grid-template-columns:1fr;gap:8px}
-  .episodes{padding:0 16px}
-  .ep{grid-template-columns:1fr;gap:16px}
-  .ep .thumb{display:grid;grid-template-columns:120px 1fr;gap:12px;align-items:center}
-  .ep .thumb span{margin-top:0}
-  .ret{grid-column:1;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px}
-  .ret .val{font-size:22px;margin:0}
-  .axis-row{grid-template-columns:1fr}
-  .axis-row>.axis-spacer{display:none}
-}
+.episodes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:0 0 48px}
+.episodes a{display:block;text-decoration:none;color:inherit}
+.episodes img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:var(--radius)}
+.episodes span{display:block;margin-top:8px;font:600 14px/1.3 var(--font-body);color:var(--ink)}
+.episodes small{display:block;font-size:12px;color:var(--ink-muted)}
+.episodes a:hover span{text-decoration:underline;text-underline-offset:3px}
+.charts{display:grid;grid-template-columns:1fr;gap:48px}
+@media(max-width:640px){.kpis{grid-template-columns:1fr;gap:8px}.episodes{grid-template-columns:1fr;gap:12px}.episodes a{display:grid;grid-template-columns:120px 1fr;gap:12px;align-items:center}.episodes span{margin-top:0}}
 </style>
 </head>
 <body>
 <main class="dc-page">
   <p class="dc-eyebrow">PodDelas + Disney · youtube · resultados até 12/10/2026</p>
   <h1 class="dc-title">os três episódios passaram da estimativa. Magic + Hollywood entregou 3,5×.</h1>
-  <p class="dc-sub">views e retenção média de cada episódio comparadas à estimativa prevista. a barra mostra as views em uma escala comum; a linha tracejada marca a estimativa.</p>
+  <p class="dc-sub">views e retenção média de cada episódio comparadas ao que foi estimado para a campanha.</p>
 
   <div class="kpis">
     <section class="dc-card" aria-label="visualizações totais">
@@ -87,54 +44,51 @@
     </section>
   </div>
 
-  <div class="section-head"><h2>resultado por episódio</h2><p>views · escala comum</p></div>
-  <section class="dc-card episodes" id="episodes" aria-label="views e retenção por episódio"></section>
-  <div class="legend" aria-hidden="true"><span><i class="sw focus"></i>episódio em destaque</span><span><i class="sw"></i>demais episódios</span><span><i class="sw goal-sw"></i>estimativa</span></div>
+  <nav class="episodes" aria-label="episódios">
+    <a href="https://youtu.be/e5OvVvvVTWk" target="_blank" rel="noopener noreferrer"><img src="assets/thumb-magic-hollywood.jpg" alt="" width="320" height="180"><div><span>Magic + Hollywood</span><small>vlog · parques</small></div></a>
+    <a href="https://youtu.be/yT3tFT_LSjw" target="_blank" rel="noopener noreferrer"><img src="assets/thumb-epcot-animal-kingdom.jpg" alt="" width="320" height="180"><div><span>EPCOT + Animal Kingdom</span><small>vlog · parques</small></div></a>
+    <a href="https://youtu.be/F4omHw7zeaU" target="_blank" rel="noopener noreferrer"><img src="assets/thumb-podcast-flavia-calina.jpg" alt="" width="320" height="180"><div><span>Podcast · Flávia Calina</span><small>podcast</small></div></a>
+  </nav>
+
+  <div class="charts">
+    <figure class="dcc" style="margin:0">
+      <h2 class="dcc-title">Magic + Hollywood rendeu 3,5× o previsto; o podcast ficou praticamente na estimativa.</h2>
+      <p class="dcc-sub">views por episódio · ponto vazado = estimativa · ponto cheio = views reais · laranja = maior entrega · escala comum</p>
+      <svg id="views" role="img" aria-label="views reais e estimadas por episódio"></svg>
+      <div class="dcc-legend" aria-hidden="true"><span><i class="hollow"></i>estimativa</span><span><i></i>real</span><span><i class="hero"></i>maior entrega</span></div>
+      <p class="dcc-src">halteres · views × estimativa · youtube studio até 12/10/2026 · n = 3 episódios</p>
+    </figure>
+    <figure class="dcc" style="margin:0">
+      <h2 class="dcc-title">EPCOT + Animal Kingdom segurou mais o público: 37,87% de retenção, 10,9 p.p. acima do previsto.</h2>
+      <p class="dcc-sub">retenção média (porcentagem média assistida) · ponto vazado = estimativa · ponto cheio = real · laranja = maior retenção</p>
+      <svg id="retention" role="img" aria-label="retenção real e estimada por episódio"></svg>
+      <p class="dcc-src">halteres · retenção × estimativa · youtube studio até 12/10/2026 · n = 3 episódios</p>
+    </figure>
+  </div>
 
   <footer class="dc-foot">
-    <p class="dc-source">fonte: youtube studio · views e retenção média até 12/10/2026 · n=3 episódios · estimativas: valores previstos por episódio · retenção = porcentagem média assistida.</p>
+    <p class="dc-source">fonte: youtube studio · views e retenção média até 12/10/2026 · estimativas: valores previstos por episódio.</p>
     <img class="dc-sign" src="assets/datacria-logo-tinta.png" alt="Data Cria" width="88" height="16">
   </footer>
 </main>
-<div class="dc-tip" id="tip" role="tooltip" hidden></div>
+<script src="assets/dc-charts.js?v=2"></script>
 <script>
-const EPISODES=[
-  {name:'Magic + Hollywood',url:'https://youtu.be/e5OvVvvVTWk',thumb:'assets/thumb-magic-hollywood.jpg',views:171365,est:49300,ret:34.85,retEst:27.00,focus:true},
-  {name:'EPCOT + Animal Kingdom',url:'https://youtu.be/yT3tFT_LSjw',thumb:'assets/thumb-epcot-animal-kingdom.jpg',views:71903,est:49300,ret:37.87,retEst:27.00},
-  {name:'Podcast · Flávia Calina',url:'https://youtu.be/F4omHw7zeaU',thumb:'assets/thumb-podcast-flavia-calina.jpg',views:186805,est:183000,ret:24.85,retEst:23.00}
+const E=[
+  {label:'Magic + Hollywood',views:171365,est:49300,ret:34.85,retEst:27.00},
+  {label:'EPCOT + Animal Kingdom',views:71903,est:49300,ret:37.87,retEst:27.00},
+  {label:'Podcast · Flávia Calina',views:186805,est:183000,ret:24.85,retEst:23.00}
 ];
-const MAX=200000,TICKS=[0,50000,100000,150000,200000];
-const n=v=>v.toLocaleString('pt-BR'),pct=v=>v.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2}),
-      x=v=>(v/MAX*100)+'%',tick=v=>v===0?'0':(v/1000)+' mil';
-const sign=d=>(d>=0?'▲ +':'▼ −')+pct(Math.abs(d));
-const box=document.getElementById('episodes');
-box.innerHTML=EPISODES.map(e=>{
-  const over=(e.views/e.est-1)*100,mult=(e.views/e.est).toLocaleString('pt-BR',{maximumFractionDigits:1}),dret=e.ret-e.retEst;
-  const label=`${e.name}: ${n(e.views)} views, estimativa ${n(e.est)}, ${pct(e.views/e.est*100)}% da estimativa`;
-  return `<article class="ep">
-    <a class="thumb" href="${e.url}" target="_blank" rel="noopener noreferrer"><img src="${e.thumb}" alt="" width="320" height="180" loading="lazy"><span>${e.name}</span></a>
-    <div>
-      <div class="readout"><strong>${n(e.views)}</strong><small>views</small><span class="dc-delta ${over>=0?'pos':'neg'}">${sign(over)}% <span class="ctx">vs. estimativa</span></span></div>
-      <div class="track" tabindex="0" role="img" aria-label="${label}" data-tip="${e.name}|${n(e.views)} views · estimativa ${n(e.est)}|${pct(e.views/e.est*100)}% da estimativa">
-        ${TICKS.map(t=>`<i class="grid-line" style="left:${x(t)}"></i>`).join('')}
-        <i class="bar${e.focus?' focus':''}" style="width:${x(e.views)}"></i>
-        ${e.focus?(e.views/MAX>.7?`<span class="annot inside" style="right:${100-e.views/MAX*100}%">${mult}× a estimativa</span>`:`<span class="annot" style="left:${x(e.views)}">${mult}× a estimativa</span>`):''}
-        <i class="goal" style="left:${x(e.est)}"></i><span class="goal-label" style="left:${x(e.est)}">estimativa ${n(e.est)}</span>
-      </div>
-    </div>
-    <div class="ret"><div class="dc-label">retenção média</div><div class="val">${pct(e.ret)}%</div><span class="dc-delta ${dret>=0?'pos':'neg'}">${sign(dret)} p.p. <span class="ctx">vs. estimativa (${pct(e.retEst)}%)</span></span></div>
-  </article>`}).join('')+
-  `<div class="axis-row" aria-hidden="true"><span class="axis-spacer"></span><div class="axis">${TICKS.map(t=>`<span style="left:${x(t)}">${tick(t)}</span>`).join('')}</div><span class="axis-spacer"></span></div>`;
-// tooltip por ponteiro e teclado
-const tip=document.getElementById('tip');
-function show(el,cx,cy){tip.replaceChildren();el.dataset.tip.split('|').forEach((s,i)=>{const l=document.createElement(i?'div':'b');l.textContent=s;tip.append(l)});tip.hidden=false;
-  const r=el.getBoundingClientRect(),X=cx??r.left+r.width/2,Y=cy??r.top;
-  tip.style.left=Math.max(8,Math.min(X-30,innerWidth-tip.offsetWidth-8))+'px';const t=Y-tip.offsetHeight-12;tip.style.top=(t>8?t:Y+20)+'px'}
-for(const el of document.querySelectorAll('[data-tip]')){
-  el.addEventListener('pointermove',e=>show(el,e.clientX,e.clientY));el.addEventListener('pointerleave',()=>tip.hidden=true);
-  el.addEventListener('focus',()=>show(el));el.addEventListener('blur',()=>tip.hidden=true);
-  el.addEventListener('keydown',e=>{if(e.key==='Escape')tip.hidden=true})}
-addEventListener('scroll',()=>tip.hidden=true,{passive:true});
+const n=v=>v.toLocaleString('pt-BR'),p2=v=>v.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2}),k=v=>v===0?'0':(v/1000)+' mil';
+const bestViews=E.reduce((a,b)=>b.views/b.est>a.views/a.est?b:a),bestRet=E.reduce((a,b)=>b.ret>a.ret?b:a);
+const vs=document.getElementById('views'),rs=document.getElementById('retention');
+DCC.reveal(vs.parentNode,()=>DCC.dumbbell(vs,{max:200000,ticks:[0,50000,100000,150000,200000],tickFmt:k,
+  rows:E.map(e=>({label:e.label,actual:e.views,est:e.est,hero:e===bestViews,display:n(e.views),
+    note:'▲ +'+p2((e.views/e.est-1)*100)+'% vs. estimativa ('+n(e.est)+')',noteShort:'▲ +'+p2((e.views/e.est-1)*100)+'%',aria:`${e.label}: ${n(e.views)} views, estimativa ${n(e.est)}`})),
+  tip:i=>`<b>${E[i].label}</b><br>${n(E[i].views)} views · estimativa ${n(E[i].est)}<br>${p2(E[i].views/E[i].est*100)}% da estimativa`}));
+DCC.reveal(rs.parentNode,()=>DCC.dumbbell(rs,{max:50,ticks:[0,10,20,30,40,50],tickFmt:t=>t+'%',
+  rows:E.map(e=>({label:e.label,actual:e.ret,est:e.retEst,hero:e===bestRet,display:p2(e.ret)+'%',
+    note:'▲ +'+p2(e.ret-e.retEst)+' p.p. vs. estimativa ('+p2(e.retEst)+'%)',noteShort:'▲ +'+p2(e.ret-e.retEst)+' p.p.',aria:`${e.label}: retenção ${p2(e.ret)}%, estimativa ${p2(e.retEst)}%`})),
+  tip:i=>`<b>${E[i].label}</b><br>retenção ${p2(E[i].ret)}% · estimativa ${p2(E[i].retEst)}%`}));
 </script>
 </body>
 </html>

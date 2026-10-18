@@ -7,68 +7,37 @@
 <title>Minutos assistidos · PodDelas + Disney</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Jost:wght@600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/datacria-report.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Jost:wght@600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/datacria-report.css?v=2">
+<link rel="stylesheet" href="assets/dc-charts.css?v=2">
 <style>
 .dc-page{max-width:1080px}
-.controls{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:24px}
-.controls h2{margin:0;font:600 18px/1.3 var(--font-display);color:var(--ink)}
-.rows,.axis-row{display:grid;grid-template-columns:200px minmax(0,1fr);gap:8px 24px}
-.rows{row-gap:24px;align-items:center}
-.name{font:600 15px/1.3 var(--font-body);color:var(--ink)}
-.name small{display:block;margin-top:4px;font-size:12px;font-weight:400;color:var(--ink-muted)}
-.readout{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:4px 12px;margin-bottom:8px}
-.readout strong{font:600 22px/1.2 var(--font-display);font-variant-numeric:tabular-nums;color:var(--ink)}
-.readout span{font-size:13px;color:var(--ink-muted)}
-.readout em{font-style:normal;font-weight:600;color:var(--orange-text)}
-.track{position:relative;height:18px}
-.track:focus-visible{outline-offset:4px}
-.dur{position:absolute;left:0;top:0;bottom:0;background:var(--neutral-soft);border-right:1.5px solid var(--neutral);transition:width .3s ease}
-.fill{position:absolute;left:0;top:0;bottom:0;background:var(--neutral);transition:width .3s ease}
-.fill.focus{background:var(--orange)}
-.axis-row{margin-top:16px}
-.axis{position:relative;height:16px;font-size:11px;color:var(--ink-muted);border-top:1px solid var(--line);padding-top:4px}
-.axis span{position:absolute;transform:translateX(-50%);white-space:nowrap}
-.axis span:first-child{transform:none}
-.axis span.end{transform:translateX(-100%)}
-.legend{display:flex;flex-wrap:wrap;gap:8px 24px;margin-top:24px;font-size:12px;color:var(--ink-muted)}
-.legend span{display:inline-flex;align-items:center;gap:8px}
-.sw{display:inline-block;width:14px;height:10px;background:var(--neutral)}
-.sw.focus{background:var(--orange)}
-.sw.dur-sw{background:var(--neutral-soft);border-right:1.5px solid var(--neutral)}
-@media(max-width:640px){
-  .controls{flex-direction:column;align-items:flex-start}
-  .controls .dc-seg{display:flex;width:100%}.controls .dc-seg button{flex:1}
-  .rows,.axis-row{grid-template-columns:1fr}
-  .rows{row-gap:8px}
-  .measure{margin-bottom:16px}
-  .axis-row>span:first-child{display:none}
-}
+.controls{display:flex;justify-content:flex-start;margin:0 0 16px}
+@media(max-width:640px){.controls .dc-seg{display:flex;width:100%}.controls .dc-seg button{flex:1}}
 </style>
 </head>
 <body>
 <main class="dc-page">
   <p class="dc-eyebrow">PodDelas + Disney · youtube · tempo médio assistido</p>
   <h1 class="dc-title">o podcast prende mais minutos; EPCOT + Animal Kingdom, a maior parte do vídeo.</h1>
-  <p class="dc-sub">quanto de cada episódio foi assistido, em média, por visualização. em minutos, a barra clara é a duração total do vídeo.</p>
-  <section class="dc-card" aria-label="tempo médio assistido por episódio">
-    <div class="controls">
-      <h2 id="chart-title">minutos assistidos por visualização</h2>
-      <div class="dc-seg" role="group" aria-label="exibição">
-        <button type="button" data-mode="minutes" aria-pressed="true">tempo médio</button>
-        <button type="button" data-mode="percent" aria-pressed="false">% do vídeo</button>
-      </div>
-    </div>
-    <div class="rows" id="rows"></div>
-    <div class="axis-row" aria-hidden="true"><span></span><div class="axis" id="axis"></div></div>
-    <div class="legend" id="legend" aria-hidden="true"></div>
-  </section>
+  <p class="dc-sub">quanto de cada episódio foi assistido, em média, por visualização.</p>
+  <figure class="dcc" style="margin:0" id="fig">
+    <h2 class="dcc-title" id="title"></h2>
+    <p class="dcc-sub" id="sub"></p>
+    <div class="controls"><div class="dc-seg" role="group" aria-label="exibição">
+      <button type="button" data-mode="minutes" aria-pressed="true">tempo médio</button>
+      <button type="button" data-mode="percent" aria-pressed="false">% do vídeo</button>
+    </div></div>
+    <div id="rows"></div>
+    <div class="dcc-legend" id="legend" aria-hidden="true"></div>
+    <p class="dcc-src">escada de traços · porcentagem média assistida × duração (cálculo data cria) · youtube studio · n = 3 episódios</p>
+  </figure>
   <footer class="dc-foot">
-    <p class="dc-source">fonte: youtube studio · porcentagem média assistida × duração do vídeo (cálculo data cria) · n=3 episódios · a porcentagem vem arredondada a duas casas, então os minutos são aproximados. a barra é a média por visualização, não uma curva de retenção.</p>
+    <p class="dc-source">fonte: youtube studio. a porcentagem vem arredondada a duas casas, então os minutos são aproximados. é a média por visualização, não uma curva de retenção.</p>
     <img class="dc-sign" src="assets/datacria-logo-tinta.png" alt="Data Cria" width="88" height="16">
   </footer>
 </main>
-<div class="dc-tip" id="tip" role="tooltip" hidden></div>
+<script src="assets/dc-charts.js?v=2"></script>
 <script>
 const V=[
   {name:'Magic + Hollywood',dur:2513,pct:34.85},
@@ -80,29 +49,19 @@ const mmss=s=>{s=Math.round(s);const h=Math.floor(s/3600),m=Math.floor(s%3600/60
   pct=v=>v.toLocaleString('pt-BR',{minimumFractionDigits:2})+'%';
 let mode='minutes';
 const best={minutes:V.reduce((a,b)=>b.avg>a.avg?b:a),percent:V.reduce((a,b)=>b.pct>a.pct?b:a)};
+const $=id=>document.getElementById(id);
 function render(){
-  const MAXS=80*60,isMin=mode==='minutes',focus=best[mode];
-  document.getElementById('chart-title').textContent=isMin?'minutos assistidos por visualização':'parte do vídeo assistida, em média';
-  document.getElementById('rows').innerHTML=V.map(v=>{
-    const f=v===focus,w=isMin?v.avg/MAXS*100:v.pct,d=isMin?v.dur/MAXS*100:100;
-    const main=isMin?minsec(v.avg):pct(v.pct),sec=isMin?`${pct(v.pct)} de ${mmss(v.dur)}`:`${minsec(v.avg)} de ${mmss(v.dur)}`;
-    const note=f?`<em>${isMin?'maior tempo médio':'maior proporção'}</em> · `:'';
-    return `<div class="name">${v.name}<small>duração · ${mmss(v.dur)}</small></div>
-      <div class="measure"><div class="readout"><strong>${main}</strong><span>${note}${sec}</span></div>
-      <div class="track" tabindex="0" role="img" aria-label="${v.name}: ${minsec(v.avg)} em média, ${pct(v.pct)} da duração de ${mmss(v.dur)}" data-tip="${v.name}|${minsec(v.avg)} em média · ${pct(v.pct)} do vídeo|duração total: ${mmss(v.dur)}">
-        <i class="dur" style="width:${d}%"></i><i class="fill${f?' focus':''}" style="width:${w}%"></i></div></div>`}).join('');
-  const ticks=isMin?[0,20,40,60,80].map(m=>[m/80*100,m+' min']):[0,25,50,75,100].map(p=>[p,p+'%']);
-  document.getElementById('axis').innerHTML=ticks.map(([x,l],i)=>`<span class="${i===ticks.length-1?'end':''}" style="left:${x}%">${l}</span>`).join('');
-  document.getElementById('legend').innerHTML=`<span><i class="sw focus"></i>${isMin?'maior tempo médio':'maior proporção'}</span><span><i class="sw"></i>demais episódios</span>`+(isMin?'<span><i class="sw dur-sw"></i>duração total do vídeo</span>':'');
-  bindTips();
+  const isMin=mode==='minutes',f=best[mode];
+  $('title').textContent=isMin?`${f.name} é o episódio com mais minutos assistidos: ${minsec(f.avg)} por visualização.`:`${f.name} teve a maior parte do vídeo assistida: ${pct(f.pct)}.`;
+  $('sub').textContent=isMin?'um traço = 1 minuto · traço escuro = minuto assistido em média · traço claro = resto do vídeo · laranja = maior tempo médio':'um traço = 2% do vídeo · traço escuro = parte assistida em média · traço claro = resto · laranja = maior proporção';
+  DCC.rungs($('rows'),{unit:isMin?60:2,maxMarks:100,gap:5,rungH:26,rows:V.map(v=>{const hero=v===f;return{label:v.name,sub:`duração · ${mmss(v.dur)}`,hero,
+    parts:[{v:isMin?v.avg:v.pct,cls:hero?'hero':''}],track:isMin?v.dur:100,
+    display:isMin?`${minsec(v.avg)} · ${pct(v.pct)}`:`${pct(v.pct)} · ${minsec(v.avg)}`,
+    aria:`${v.name}: ${minsec(v.avg)} em média, ${pct(v.pct)} da duração de ${mmss(v.dur)}`}})});
+  $('legend').innerHTML=`<span><i class="rung hero"></i>${isMin?'maior tempo médio':'maior proporção'}</span><span><i class="rung"></i>assistido</span><span><i class="rung soft"></i>resto do vídeo</span>`;
 }
-document.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>{mode=b.dataset.mode;document.querySelectorAll('[data-mode]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));render()});
-const tip=document.getElementById('tip');
-function show(el,cx,cy){tip.replaceChildren();el.dataset.tip.split('|').forEach((s,i)=>{const l=document.createElement(i?'div':'b');l.textContent=s;tip.append(l)});tip.hidden=false;
-  const r=el.getBoundingClientRect(),X=cx??r.left+r.width/2,Y=cy??r.top;tip.style.left=Math.max(8,Math.min(X+12,innerWidth-tip.offsetWidth-8))+'px';const t=Y-tip.offsetHeight-12;tip.style.top=(t>8?t:Y+20)+'px'}
-function bindTips(){for(const el of document.querySelectorAll('[data-tip]')){el.onpointermove=e=>show(el,e.clientX,e.clientY);el.onpointerleave=()=>tip.hidden=true;el.onfocus=()=>show(el);el.onblur=()=>tip.hidden=true}}
-addEventListener('scroll',()=>tip.hidden=true,{passive:true});
-render();
+const r=DCC.reveal($('fig'),render);
+document.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>{mode=b.dataset.mode;document.querySelectorAll('[data-mode]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));r.redraw(true)});
 </script>
 </body>
 </html>

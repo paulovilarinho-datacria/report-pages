@@ -1,0 +1,60 @@
+/* Data Cria Charts · gramática editorial (referência de princípios: lieflat; código próprio)
+   marcas finas, unidade contável, rótulo só no que importa, laranja = um protagonista */
+:root{
+  --dcc-ink:#2B2A27;--dcc-ink-2:#55534F;--dcc-ink-3:#68655F;--dcc-ink-4:#8A8780;--dcc-ink-5:#AFABA3;--dcc-ink-6:#C9C5BD;--dcc-ink-7:#E6E3DD;
+  --dcc-hero:#FF8835;--dcc-hero-text:#B4470F;--dcc-pos:#2F8F6F;--dcc-neg:#B23A48;
+  --dcc-font:'Inter',system-ui,sans-serif;--dcc-display:'Jost','Inter',system-ui,sans-serif;
+}
+.dcc{font-family:var(--dcc-font);color:var(--dcc-ink)}
+.dcc-title{margin:0 0 4px;font:600 clamp(18px,2vw,22px)/1.25 var(--dcc-display);letter-spacing:-.01em;color:var(--dcc-ink-2);max-width:44ch}
+.dcc-sub{margin:0 0 16px;font:400 12px/1.6 var(--dcc-font);color:var(--dcc-ink-3);max-width:80ch}
+.dcc-src{margin:12px 0 0;font:500 10px/1.6 var(--dcc-font);letter-spacing:.08em;text-transform:uppercase;color:var(--dcc-ink-3)}
+.dcc svg{display:block;width:100%;overflow:visible;font-family:var(--dcc-font)}
+.dcc svg text{fill:var(--dcc-ink-3);font-size:10px}
+.dcc svg .dcc-axis{font-size:9.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;fill:var(--dcc-ink-3)}
+.dcc svg .dcc-val{font-weight:800;fill:var(--dcc-ink);font-size:11px}
+.dcc svg .dcc-val.hero{fill:var(--dcc-hero-text)}
+.dcc svg .dcc-note{font-size:10px;fill:var(--dcc-ink-3)}
+.dcc svg .dcc-hair{stroke:var(--dcc-ink);stroke-width:1;fill:none;stroke-linejoin:round;stroke-linecap:round}
+.dcc svg .dcc-floor{stroke:var(--dcc-ink-6);stroke-width:1}
+.dcc svg .dcc-tick{stroke:var(--dcc-ink-6);stroke-width:1}
+.dcc svg .dcc-tick.major{stroke:var(--dcc-ink-4)}
+.dcc svg .dcc-guide{stroke:var(--dcc-ink-4);stroke-width:1;stroke-dasharray:2 3}
+.dcc svg .dcc-dot{fill:var(--dcc-ink)}
+.dcc svg .dcc-dot.hollow{fill:var(--dcc-paper,#FFFDFA);stroke:var(--dcc-ink);stroke-width:1}
+.dcc svg .dcc-dot.hero{fill:var(--dcc-hero)}
+.dcc svg .dcc-rung{stroke:var(--dcc-ink);stroke-width:1}
+.dcc svg .dcc-rung.soft{stroke:var(--dcc-ink-6)}
+.dcc svg .dcc-rung.hero{stroke:var(--dcc-hero)}
+.dcc svg [data-i]{cursor:pointer}
+.dcc svg [data-i]:focus{outline:none}
+.dcc svg [data-i]:focus-visible .dcc-ring,.dcc svg .dcc-ring.on{stroke:var(--dcc-ink);stroke-width:1.5;fill:none}
+.dcc-legend{display:flex;flex-wrap:wrap;gap:6px 20px;margin:12px 0 0;font:600 9.5px/1.6 var(--dcc-font);letter-spacing:.06em;text-transform:uppercase;color:var(--dcc-ink-3)}
+.dcc-legend span{display:inline-flex;align-items:center;gap:8px}
+.dcc-legend i{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--dcc-ink)}
+.dcc-legend i.hero{background:var(--dcc-hero)}
+.dcc-legend i.hollow{background:transparent;border:1px solid var(--dcc-ink)}
+.dcc-legend i.rung{width:10px;height:10px;border-radius:0;background:repeating-linear-gradient(90deg,var(--dcc-ink) 0 1px,transparent 1px 3px)}
+.dcc-legend i.rung.hero{background:repeating-linear-gradient(90deg,var(--dcc-hero) 0 1px,transparent 1px 3px)}
+.dcc-legend i.rung.soft{background:repeating-linear-gradient(90deg,var(--dcc-ink-6) 0 1px,transparent 1px 3px)}
+.dcc-legend i.dash{width:14px;height:0;border-radius:0;background:none;border-top:1px dashed var(--dcc-ink-4)}
+.dcc-tip{position:fixed;z-index:50;pointer-events:none;max-width:280px;padding:10px 14px;border-radius:4px;background:var(--dcc-ink);color:#F7F5F1;font:400 12px/1.5 var(--dcc-font)}
+.dcc-tip b{font-weight:700}
+.dcc-tip[hidden]{display:none}
+/* movimento: entra rápido e para, sem quicar; replay ao clicar */
+.dcc .pop{transform-box:fill-box;transform-origin:center;animation:dcc-pop .45s cubic-bezier(.2,.7,.3,1) both}
+.dcc .fade{animation:dcc-fade .7s ease both}
+.dcc .draw{stroke-dasharray:1;stroke-dashoffset:1;animation:dcc-draw 1s cubic-bezier(.25,1,.5,1) both}
+@keyframes dcc-pop{from{transform:scale(0)}to{transform:none}}
+@keyframes dcc-fade{from{opacity:0}}
+@keyframes dcc-draw{to{stroke-dashoffset:0}}
+@media (prefers-reduced-motion:reduce){.dcc .pop,.dcc .fade{animation:none}.dcc .draw{animation:none;stroke-dasharray:none;stroke-dashoffset:0}}
+.dcc-rows{display:grid;gap:0}
+.dcc-row{display:grid;grid-template-columns:minmax(120px,200px) minmax(0,1fr);gap:16px;align-items:center;padding:10px 0;border-bottom:1px solid var(--dcc-ink-7)}
+.dcc-row:last-child{border-bottom:0}
+.dcc-row-label{font:500 13px/1.35 var(--dcc-font);color:var(--dcc-ink)}
+.dcc-row-label small{display:block;margin-top:2px;font:400 11px/1.4 var(--dcc-font);color:var(--dcc-ink-3)}
+.dcc-row.is-small .dcc-row-label{color:var(--dcc-ink-3)}
+.dcc-row svg{height:22px}
+@media(max-width:560px){.dcc-row{grid-template-columns:1fr;gap:4px}}
+.dcc-still .pop,.dcc-still .fade,.dcc-still .draw{animation:none!important;stroke-dasharray:none;stroke-dashoffset:0}
