@@ -2,40 +2,107 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#f5f3ed">
-<title>Média de minutos assistidos · PodDelas + Disney</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#F7F5F1">
+<title>Minutos assistidos · PodDelas + Disney</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Jost:wght@600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/datacria-report.css">
 <style>
-:root{color-scheme:light;--paper:#f5f3ed;--card:#fffefa;--ink:#20362e;--muted:#68756e;--line:#d8ddd4;--orange:#e36338;--green:#376647;--violet:#7567a1;--soft:#e8ece5;--shadow:0 12px 32px #23372d10}
-*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.5 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.wrap{max-width:1050px;margin:auto;padding:28px 22px 34px}.top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:24px}.brand{font-size:12px;font-weight:800;letter-spacing:.17em;color:var(--muted)}.period{font-size:13px;color:var(--muted);text-align:right}.intro{margin:0 0 22px}.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:750;margin:0 0 6px}h1{font-size:clamp(25px,4vw,36px);line-height:1.12;letter-spacing:-.035em;margin:0 0 9px} .sub{margin:0;color:var(--muted);max-width:690px}.panel{background:var(--card);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);padding:24px 26px}.controls{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:25px}.controls label{font-weight:700;font-size:14px}.switch{border:1px solid var(--line);background:#fff;border-radius:999px;padding:4px;display:flex;gap:3px}.switch button{border:0;border-radius:999px;padding:9px 14px;background:transparent;color:var(--muted);font:inherit;font-size:13px;font-weight:700;cursor:pointer}.switch button[aria-pressed=true]{background:var(--ink);color:white}.axis{display:flex;justify-content:space-between;color:var(--muted);font-size:12px;margin:0 0 8px 190px;padding:0 2px}.rows{display:grid;gap:21px}.row{display:grid;grid-template-columns:170px minmax(0,1fr);gap:20px;align-items:center}.video{font-weight:750;line-height:1.25}.video small{display:block;color:var(--muted);font-size:12px;font-weight:500;margin-top:6px}.measure{min-width:0}.readout{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:8px}.mainval{font-size:clamp(18px,2.6vw,24px);font-weight:800;letter-spacing:-.025em}.secondary{font-size:13px;color:var(--muted);text-align:right}.track{height:18px;background:var(--soft);border-radius:999px;position:relative;overflow:visible}.fill{height:100%;width:var(--pct);background:var(--c);border-radius:999px;position:relative;transition:width .35s ease}.marker{position:absolute;right:-1px;top:50%;width:3px;height:27px;border-radius:3px;background:var(--ink);transform:translateY(-50%)}.scale{display:flex;justify-content:space-between;color:var(--muted);font-size:11px;margin-top:6px}.bottom{display:flex;justify-content:space-between;gap:20px;border-top:1px solid var(--line);padding-top:17px;margin-top:24px;color:var(--muted);font-size:13px}.bottom strong{color:var(--ink)}.method{margin:18px 2px 0;color:var(--muted);font-size:12px}.tip{position:fixed;z-index:5;display:none;pointer-events:none;background:#20362e;color:white;border-radius:9px;padding:9px 12px;font-size:12px;box-shadow:0 6px 20px #0002;max-width:240px}.tip strong{color:white}
-@media(max-width:650px){.wrap{padding:18px 13px 24px}.top{margin-bottom:19px}.panel{padding:18px 15px;border-radius:18px}.controls{align-items:flex-start;flex-direction:column;margin-bottom:22px}.switch{width:100%}.switch button{flex:1}.axis{margin-left:0}.row{grid-template-columns:1fr;gap:8px}.video{font-size:15px}.video small{display:inline;margin-left:5px}.rows{gap:20px}.readout{align-items:flex-start;flex-direction:column;gap:1px}.secondary{text-align:left}.bottom{flex-direction:column;gap:8px}}
-@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+.dc-page{max-width:1080px}
+.controls{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:24px}
+.controls h2{margin:0;font:600 18px/1.3 var(--font-display);color:var(--ink)}
+.rows,.axis-row{display:grid;grid-template-columns:200px minmax(0,1fr);gap:8px 24px}
+.rows{row-gap:24px;align-items:center}
+.name{font:600 15px/1.3 var(--font-body);color:var(--ink)}
+.name small{display:block;margin-top:4px;font-size:12px;font-weight:400;color:var(--ink-muted)}
+.readout{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:4px 12px;margin-bottom:8px}
+.readout strong{font:600 22px/1.2 var(--font-display);font-variant-numeric:tabular-nums;color:var(--ink)}
+.readout span{font-size:13px;color:var(--ink-muted)}
+.readout em{font-style:normal;font-weight:600;color:var(--orange-text)}
+.track{position:relative;height:18px}
+.track:focus-visible{outline-offset:4px}
+.dur{position:absolute;left:0;top:0;bottom:0;background:var(--neutral-soft);border-right:1.5px solid var(--neutral);transition:width .3s ease}
+.fill{position:absolute;left:0;top:0;bottom:0;background:var(--neutral);transition:width .3s ease}
+.fill.focus{background:var(--orange)}
+.axis-row{margin-top:16px}
+.axis{position:relative;height:16px;font-size:11px;color:var(--ink-muted);border-top:1px solid var(--line);padding-top:4px}
+.axis span{position:absolute;transform:translateX(-50%);white-space:nowrap}
+.axis span:first-child{transform:none}
+.axis span.end{transform:translateX(-100%)}
+.legend{display:flex;flex-wrap:wrap;gap:8px 24px;margin-top:24px;font-size:12px;color:var(--ink-muted)}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.sw{display:inline-block;width:14px;height:10px;background:var(--neutral)}
+.sw.focus{background:var(--orange)}
+.sw.dur-sw{background:var(--neutral-soft);border-right:1.5px solid var(--neutral)}
+@media(max-width:640px){
+  .controls{flex-direction:column;align-items:flex-start}
+  .controls .dc-seg{display:flex;width:100%}.controls .dc-seg button{flex:1}
+  .rows,.axis-row{grid-template-columns:1fr}
+  .rows{row-gap:8px}
+  .measure{margin-bottom:16px}
+  .axis-row>span:first-child{display:none}
+}
 </style>
 </head>
 <body>
-<main class="wrap">
-  <section class="intro"><h1>Quanto do vídeo foi assistido, em média?</h1><p class="sub">Cada barra mostra a duração média assistida como parte da duração total do vídeo.</p></section>
-  <section class="panel" aria-label="Gráfico de duração média assistida por vídeo">
-    <div class="controls"><label id="modeLabel">Exibição</label><div class="switch" role="group" aria-labelledby="modeLabel"><button type="button" data-mode="minutes" aria-pressed="true">Tempo médio</button><button type="button" data-mode="percent" aria-pressed="false">% do vídeo</button></div></div>
-    <div class="axis" aria-hidden="true"><span>0%</span><span>25%</span><span>50%</span><span>75%</span><span>100%</span></div>
-    <div class="rows">
-      <article class="row" style="--pct:34.85%;--c:var(--orange)" data-name="Magic + Hollywood" data-min="14,60" data-time="14 min 36 s" data-percent="34,85%" data-duration="41min 53s">
-        <div class="video">Magic + Hollywood<small>duração total · 41:53</small></div><div class="measure"><div class="readout"><span class="mainval">14 min 36 s</span><span class="secondary">34,85% do vídeo · 41:53 no total</span></div><div class="track" tabindex="0" role="img" aria-label="Magic + Hollywood: 14 minutos e 36 segundos médios, 34,85 por cento da duração"><div class="fill"><i class="marker"></i></div></div><div class="scale"><span>0</span><span>tempo médio assistido</span><span>100%</span></div></div>
-      </article>
-      <article class="row" style="--pct:37.87%;--c:var(--green)" data-name="EPCOT + Animal Kingdom" data-min="13,96" data-time="13 min 58 s" data-percent="37,87%" data-duration="36min 52s">
-        <div class="video">EPCOT + Animal Kingdom<small>duração total · 36:52</small></div><div class="measure"><div class="readout"><span class="mainval">13 min 58 s</span><span class="secondary">37,87% do vídeo · 36:52 no total</span></div><div class="track" tabindex="0" role="img" aria-label="EPCOT + Animal Kingdom: 13 minutos e 58 segundos médios, 37,87 por cento da duração"><div class="fill"><i class="marker"></i></div></div><div class="scale"><span>0</span><span>tempo médio assistido</span><span>100%</span></div></div>
-      </article>
-      <article class="row" style="--pct:24.85%;--c:var(--violet)" data-name="Podcast com Flávia Calina" data-min="19,10" data-time="19 min 06 s" data-percent="24,85%" data-duration="1h 16min 52s">
-        <div class="video">Podcast com Flávia Calina<small>duração total · 1:16:52</small></div><div class="measure"><div class="readout"><span class="mainval">19 min 06 s</span><span class="secondary">24,85% do vídeo · 1:16:52 no total</span></div><div class="track" tabindex="0" role="img" aria-label="Podcast com Flávia Calina: 19 minutos e 6 segundos médios, 24,85 por cento da duração"><div class="fill"><i class="marker"></i></div></div><div class="scale"><span>0</span><span>tempo médio assistido</span><span>100%</span></div></div>
-      </article>
+<main class="dc-page">
+  <p class="dc-eyebrow">PodDelas + Disney · youtube · tempo médio assistido</p>
+  <h1 class="dc-title">o podcast prende mais minutos; EPCOT + Animal Kingdom, a maior parte do vídeo.</h1>
+  <p class="dc-sub">quanto de cada episódio foi assistido, em média, por visualização. em minutos, a barra clara é a duração total do vídeo.</p>
+  <section class="dc-card" aria-label="tempo médio assistido por episódio">
+    <div class="controls">
+      <h2 id="chart-title">minutos assistidos por visualização</h2>
+      <div class="dc-seg" role="group" aria-label="exibição">
+        <button type="button" data-mode="minutes" aria-pressed="true">tempo médio</button>
+        <button type="button" data-mode="percent" aria-pressed="false">% do vídeo</button>
+      </div>
     </div>
-    <div class="bottom"><span><strong>Maior tempo médio:</strong> podcast · 19,10 min</span><span><strong>Maior proporção:</strong> EPCOT + Animal Kingdom · 37,87%</span></div>
+    <div class="rows" id="rows"></div>
+    <div class="axis-row" aria-hidden="true"><span></span><div class="axis" id="axis"></div></div>
+    <div class="legend" id="legend" aria-hidden="true"></div>
   </section>
-  <p class="method">Os minutos são estimados pela duração do vídeo × porcentagem média assistida do Studio. Como a porcentagem é exibida arredondada a duas casas, o tempo calculado também é aproximado. A barra representa a média por visualização, não uma curva de retenção ao longo do episódio.</p>
+  <footer class="dc-foot">
+    <p class="dc-source">fonte: youtube studio · porcentagem média assistida × duração do vídeo (cálculo data cria) · n=3 episódios · a porcentagem vem arredondada a duas casas, então os minutos são aproximados. a barra é a média por visualização, não uma curva de retenção.</p>
+    <img class="dc-sign" src="assets/datacria-logo-tinta.png" alt="Data Cria" width="88" height="16">
+  </footer>
 </main>
-<div class="tip" role="status"></div>
+<div class="dc-tip" id="tip" role="tooltip" hidden></div>
 <script>
-(()=>{const buttons=[...document.querySelectorAll('[data-mode]')],rows=[...document.querySelectorAll('.row')],tip=document.querySelector('.tip');let mode='minutes';function show(row,x,y){tip.innerHTML='<strong>'+row.dataset.name+'</strong><br>'+row.dataset.time+' em média · '+row.dataset.percent+' do vídeo<br>Duração total: '+row.dataset.duration;tip.style.display='block';const pad=12,w=tip.offsetWidth,h=tip.offsetHeight;tip.style.left=Math.max(pad,Math.min(innerWidth-w-pad,x+14))+'px';tip.style.top=Math.max(pad,Math.min(innerHeight-h-pad,y+14))+'px'}function update(){for(const row of rows){const main=row.querySelector('.mainval'),second=row.querySelector('.secondary');if(mode==='minutes'){main.textContent=row.dataset.time;second.textContent=row.dataset.percent+' do vídeo · '+row.dataset.duration+' no total'}else{main.textContent=row.dataset.percent;second.textContent=row.dataset.time+' em média · '+row.dataset.duration+' no total'}}}buttons.forEach(b=>b.addEventListener('click',()=>{mode=b.dataset.mode;buttons.forEach(x=>x.setAttribute('aria-pressed',String(x===b)));update()}));rows.forEach(row=>{const track=row.querySelector('.track');track.addEventListener('pointermove',e=>show(row,e.clientX,e.clientY));track.addEventListener('pointerleave',()=>tip.style.display='none');track.addEventListener('focus',()=>{const r=track.getBoundingClientRect();show(row,r.left+r.width/2,r.top)});track.addEventListener('blur',()=>tip.style.display='none')})})();
+const V=[
+  {name:'Magic + Hollywood',dur:2513,pct:34.85},
+  {name:'EPCOT + Animal Kingdom',dur:2212,pct:37.87},
+  {name:'Podcast com Flávia Calina',dur:4612,pct:24.85}
+].map(v=>({...v,avg:v.dur*v.pct/100}));
+const mmss=s=>{s=Math.round(s);const h=Math.floor(s/3600),m=Math.floor(s%3600/60),x=String(s%60).padStart(2,'0');return h?`${h}:${String(m).padStart(2,'0')}:${x}`:`${m}:${x}`},
+  minsec=s=>{s=Math.round(s);return `${Math.floor(s/60)} min ${String(s%60).padStart(2,'0')} s`},
+  pct=v=>v.toLocaleString('pt-BR',{minimumFractionDigits:2})+'%';
+let mode='minutes';
+const best={minutes:V.reduce((a,b)=>b.avg>a.avg?b:a),percent:V.reduce((a,b)=>b.pct>a.pct?b:a)};
+function render(){
+  const MAXS=80*60,isMin=mode==='minutes',focus=best[mode];
+  document.getElementById('chart-title').textContent=isMin?'minutos assistidos por visualização':'parte do vídeo assistida, em média';
+  document.getElementById('rows').innerHTML=V.map(v=>{
+    const f=v===focus,w=isMin?v.avg/MAXS*100:v.pct,d=isMin?v.dur/MAXS*100:100;
+    const main=isMin?minsec(v.avg):pct(v.pct),sec=isMin?`${pct(v.pct)} de ${mmss(v.dur)}`:`${minsec(v.avg)} de ${mmss(v.dur)}`;
+    const note=f?`<em>${isMin?'maior tempo médio':'maior proporção'}</em> · `:'';
+    return `<div class="name">${v.name}<small>duração · ${mmss(v.dur)}</small></div>
+      <div class="measure"><div class="readout"><strong>${main}</strong><span>${note}${sec}</span></div>
+      <div class="track" tabindex="0" role="img" aria-label="${v.name}: ${minsec(v.avg)} em média, ${pct(v.pct)} da duração de ${mmss(v.dur)}" data-tip="${v.name}|${minsec(v.avg)} em média · ${pct(v.pct)} do vídeo|duração total: ${mmss(v.dur)}">
+        <i class="dur" style="width:${d}%"></i><i class="fill${f?' focus':''}" style="width:${w}%"></i></div></div>`}).join('');
+  const ticks=isMin?[0,20,40,60,80].map(m=>[m/80*100,m+' min']):[0,25,50,75,100].map(p=>[p,p+'%']);
+  document.getElementById('axis').innerHTML=ticks.map(([x,l],i)=>`<span class="${i===ticks.length-1?'end':''}" style="left:${x}%">${l}</span>`).join('');
+  document.getElementById('legend').innerHTML=`<span><i class="sw focus"></i>${isMin?'maior tempo médio':'maior proporção'}</span><span><i class="sw"></i>demais episódios</span>`+(isMin?'<span><i class="sw dur-sw"></i>duração total do vídeo</span>':'');
+  bindTips();
+}
+document.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>{mode=b.dataset.mode;document.querySelectorAll('[data-mode]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));render()});
+const tip=document.getElementById('tip');
+function show(el,cx,cy){tip.replaceChildren();el.dataset.tip.split('|').forEach((s,i)=>{const l=document.createElement(i?'div':'b');l.textContent=s;tip.append(l)});tip.hidden=false;
+  const r=el.getBoundingClientRect(),X=cx??r.left+r.width/2,Y=cy??r.top;tip.style.left=Math.max(8,Math.min(X+12,innerWidth-tip.offsetWidth-8))+'px';const t=Y-tip.offsetHeight-12;tip.style.top=(t>8?t:Y+20)+'px'}
+function bindTips(){for(const el of document.querySelectorAll('[data-tip]')){el.onpointermove=e=>show(el,e.clientX,e.clientY);el.onpointerleave=()=>tip.hidden=true;el.onfocus=()=>show(el);el.onblur=()=>tip.hidden=true}}
+addEventListener('scroll',()=>tip.hidden=true,{passive:true});
+render();
 </script>
 </body>
 </html>
